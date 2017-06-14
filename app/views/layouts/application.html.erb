@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <% unless current_page?(:action => 'index') %>
+    <% unless current_page?(controller: 'splash' ,action: 'index') %>
       <%= render 'layouts/navbar' %>
     <% end %>
     <div class="container">
