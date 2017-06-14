@@ -1,3 +1,5 @@
+<% if @debug %>
+
 <div class="center jumbotron">
   <div class="text-center">
   	<!--TODO Soundcloudへのログイン・認証用の受け口を実装-->
@@ -5,3 +7,7 @@
     <%= link_to 'TODO あとで消す：tracksへ',tracks_path %>
   </div>
 </div>
+
+<% else %>
+	
+<% end %>
