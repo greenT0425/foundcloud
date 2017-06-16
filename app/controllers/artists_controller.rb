@@ -7,7 +7,6 @@ class ArtistsController < ApplicationController
 	
 
   def index
-    
     # サンプルデータ
     serarchArr = [
       'Maco Marets',
@@ -29,8 +28,8 @@ class ArtistsController < ApplicationController
       
       a_name = mainInfo['artist']['name']
       a_img = mainInfo['artist']['image'][3]['#text']
-      a_similars = mainInfo['artist']['similar']['artist'].map { |a| a['name'] }
-      a_tracks = tracks['toptracks']['track'].map { |a| a['name'] }
+      a_similars = mainInfo['artist']['similar']['artist'].map { |b| b['name'] }
+      a_tracks = tracks['toptracks']['track'].map { |b| b['name'] }
       
       resultArr << {
         name: a_name,
@@ -40,9 +39,35 @@ class ArtistsController < ApplicationController
       }
     end
     
-    @resultArr = Kaminari.paginate_array(resultArr).page(params[:page]).per(10)
+    @resultArr = Kaminari.paginate_array(resultArr).page(params[:page]).per(5)
 
   end
+
+  def search
+    
+    # サンプルデータ
+    searchWord = 'never young beach'
+    
+    mainInfo = get_artist_info(searchWord)
+    tracks = get_artist_tracks(searchWord)
+    
+    
+    a_name = mainInfo['artist']['name']
+    a_img = mainInfo['artist']['image'][3]['#text']
+    a_similars = mainInfo['artist']['similar']['artist'].map { |a| a['name'] }
+    a_tracks = tracks['toptracks']['track'].map { |a| a['name'] }
+    
+    result = {
+      name: a_name,
+      img: a_img,
+      tracks: a_tracks,
+      similars: a_similars
+    }
+    
+    @result = result
+
+  end
+
 
   def get_artist_info(name)
     url = 'http://ws.audioscrobbler.com/2.0/'
