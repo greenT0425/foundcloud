@@ -14,13 +14,19 @@
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Soundcloud</a></li>
+          <li><a href="">Soundcloud</a></li>
           <li><a href="#">last.fm</a></li>
           <li><a href="#">YouTube</a></li>
         </ul>
       </div>
     </div>
   </nav>
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li class="<%= 'active' if current_page?(tracks_path) %>"><%= link_to tracks_path do %>Tracks<% end %></li>
+      <li class="<%= 'active' if current_page?(artists_path) %>"><%= link_to artists_path do %>Artists<% end %></li>
+    </ul>
+  </div>
 </header>
 
 <% else %>

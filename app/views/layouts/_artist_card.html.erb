@@ -1,49 +1,54 @@
 <% if @debug %>
 
-<div class="aCard container-fluid">
-	<div class="row">
-		<div class=" aCard-artistNameWrapper">
-			<span class="aInfo-artistName">アーティスト名</span>
-		</div>
+<% artists.each do |artist| %>
+	<div class="aCard">
 		<div class="aCard-imageWrapper">
-			<img class="aCard-image"/>
+			<img src="<%= artist[:img] %>" class="aCard-image"/>
 		</div>
-		<div class="aCard-infoWrapper aInfo">
-			<ul>
-				<li class="aInfo-evaluation">
-					<dl>
-						<dt>サービス名</dt>
-						<dd>評価</dd>
-						<dt>サービス名</dt>
-						<dd>評価</dd>
-						<dt>サービス名</dt>
-						<dd>評価</dd>
-					</dl>
-				</li>
-				<li class="aInfo-famousTracks">
-					<dl>
-						<dt>上位の曲</dt>
-						<dd>曲</dd>
-						<dd>曲</dd>
-						<dd>曲</dd>
-						<dd>曲</dd>
-						<dd>曲</dd>
-					</dl>
-				</li>
-				<li class="aInfo-relatedArtists">
-					<dl>
-						<dt>関連アーティスト</dt>
-						<dd>アーティスト</dd>
-						<dd>アーティスト</dd>
-						<dd>アーティスト</dd>
-						<dd>アーティスト</dd>
-						<dd>アーティスト</dd>
-					</dl>
-				</li>
-			</ul>
+		<div class="aCard-infoWrapper aInfo container-fluid">
+			<div class="row">
+				<div class="col-xs-12 aInfo-artistNameWrapper">
+					<span class="aInfo-artistName"><%= artist[:name] %></span>
+				</div>
+				<div class="col-xs-12 aInfo-descriptionWrapper container-fluid">
+					<ul class="row">
+						<li class="col-xs-12 col-sm-2 aInfo-evaluation">
+							<dl>
+								<dt>SC</dt>
+								<dd>評価</dd>
+								<dt>fm</dt>
+								<dd>評価</dd>
+								<dt>you</dt>
+								<dd>評価</dd>
+							</dl>
+						</li>
+						<li class="col-xs-12 col-sm-5 aInfo-famousTracks">
+							<dl>
+								<dt>上位の曲</dt>
+								<dd><%= artist[:tracks][0] %></dd>
+								<dd><%= artist[:tracks][1] %></dd>
+								<dd><%= artist[:tracks][2] %></dd>
+								<dd><%= artist[:tracks][3] %></dd>
+								<dd><%= artist[:tracks][4] %></dd>
+							</dl>
+						</li>
+						<li class="col-xs-12 col-sm-5 aInfo-relatedArtists">
+							<dl>
+								<dt>関連アーティスト</dt>
+								<dd><%= artist[:similars][0] %></dd>
+								<dd><%= artist[:similars][1] %></dd>
+								<dd><%= artist[:similars][2] %></dd>
+								<dd><%= artist[:similars][3] %></dd>
+								<dd><%= artist[:similars][4] %></dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
+<% end %>
+<%= paginate artists %>
 
 <% else %>
 

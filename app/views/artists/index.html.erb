@@ -1,8 +1,6 @@
 <% if @debug %>
 
-<% 10.times do %>
-	<%= render 'layouts/artist_card' %>
-<% end %>
+<%= render 'layouts/artist_card', artists: @resultArr %>
 
 <% else %>
 	
