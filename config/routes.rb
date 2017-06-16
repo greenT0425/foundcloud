@@ -5,12 +5,12 @@ Rails.application.routes.draw do
 	# トラック一覧
 	get 'tracks', to: 'tracks#index'
 	
-	# TODO アーティスト・アーティスト検索
-	# resources :artists,only: [:index] do
-	# 	collection do
-	# 		get :search
-	# 	end
-	# end
+	# アーティスト・アーティスト検索
+	resources :artists,only: [:index] do
+		collection do
+			get :search
+		end
+	end
 	
 	# TODO お気に入り機能やるなら
 	# resources :favorites, only: [:create, :destroy]
