@@ -1,4 +1,6 @@
-<% @resultArr.each do |artist| %>
-	<%= render 'layouts/artist_card', artist: artist %>
+<% if @resultArr %>
+	<% @resultArr.each do |result| %>
+			<%= render 'layouts/artist_card', artist: result %>
+	<% end %>
+	<%= paginate @resultArr %>
 <% end %>
-<%= paginate @resultArr %>

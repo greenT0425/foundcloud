@@ -55,5 +55,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'kaminari'
 gem 'dotenv-rails'
 gem 'faraday'
-gem 'google-api-client', '~> 0.11'
+gem 'google-api-client', '0.7'
 gem 'trollop'
