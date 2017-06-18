@@ -1,1 +1,8 @@
-<%= render 'layouts/artist_card', artist: @artist %>
+<div class="aDetail">
+	<%= render 'layouts/artist_card', artist: @artist %>
+</div>
+<section class="movies">
+	<% 10.times do %>
+		<%= render 'layouts/movie' %>
+	<% end %>
+</section>

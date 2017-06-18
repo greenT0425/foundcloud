@@ -1,34 +1,40 @@
-<div class="aCard">
-	<div class="aCard-imageWrapper">
-		<span>no Image</span>
-		<img src="<%= artist.img_s %>" class="aCard-image"/>
-	</div>
-	<div class="aCard-infoWrapper aInfo container-fluid">
-		<div class="row">
-			<div class="col-xs-12 aInfo-artistNameWrapper">
-				<span class="aInfo-artistName"><%= artist.name %></span>
-			</div>
-			<div class="col-xs-12 aInfo-descriptionWrapper container-fluid">
-				<ul class="row">
-					<li class="col-xs-12 col-sm-6 aInfo-famousTracks">
-						<dl>
-							<dt>上位の曲</dt>
-							<% JSON.parse(artist.topTracks).each do |track| %>
-								<dd><%= track %></dd>
-							<% end %>
-						</dl>
-					</li>
-					<li class="col-xs-12 col-sm-6 aInfo-relatedArtists">
-						<dl>
-							<dt>関連アーティスト</dt>
-							<% JSON.parse(artist.similar).each do |similar_artist| %>
-								<dd><%= similar_artist %></dd>
-							<% end %>
-						</dl>
-					</li>
-				</ul>
+<%= link_to(detail_artists_path(name: artist.name)) do %>
+	<div class="aCard">
+		<div class="aCard-imageWrapper">
+			<span>no Image</span>
+			<img src="<%= artist.img_l %>" class="aCard-image"/>
+		</div>
+		<div class="aCard-infoWrapper aInfo container-fluid">
+			<div class="row">
+				<div class="col-xs-12 aInfo-artistNameWrapper">
+					<span class="aInfo-artistName"><%= artist.name %></span>
+				</div>
+				<div class="col-xs-12 aInfo-descriptionWrapper container-fluid">
+					<ul class="row">
+						<li class="col-xs-12 col-sm-6 aInfo-famousTracks">
+							<dl>
+								<dt>上位の曲</dt>
+								<% JSON.parse(artist.topTracks).each do |track| %>
+									<dd><%= track %></dd>
+								<% end %>
+							</dl>
+						</li>
+						<li class="col-xs-12 col-sm-6 aInfo-relatedArtists">
+							<dl>
+								<dt>関連アーティスト</dt>
+								<% JSON.parse(artist.similar).each do |similar_artist| %>
+									<dd><%= similar_artist %></dd>
+								<% end %>
+							</dl>
+						</li>
+						<% if current_page?(action:'detail')%>
+							<li class="col-xs-12">
+								<%= raw artist.summary %>
+							</li>
+						<% end %>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
-	<%= link_to 'aaaaaa',detail_artists_path(mbid: artist.mbid) %>
-</div>
+<% end %>

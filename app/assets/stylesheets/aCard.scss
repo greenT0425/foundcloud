@@ -11,6 +11,20 @@ $squareWidth:200px;
 	@media screen and (max-width: 767px) {
 		flex-wrap:wrap;
 	}
+	a,a:hover,a:active,a:visited {
+		color:inherit;
+	}
+	> a{
+		width:$squareWidth;
+		@media screen and (max-width: 767px) {
+			width:100%;
+		}
+		> .aCard-imageWrapper{
+			@media screen and (max-width: 767px) {
+				width:100%;
+			}
+		}
+	}
 }
 .aCard-imageWrapper{
 	flex: 0 0 $squareWidth;

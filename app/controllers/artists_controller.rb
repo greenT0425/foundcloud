@@ -14,12 +14,26 @@ class ArtistsController < ApplicationController
     results = ['Maco Marets','stuts','cero','charisma.com','LUCKY TAPES','EVISBEATS','Suchmos','フレンズ','Predawn','Nulbarich']
 
     results.each do |result|
-      artist = Artist.new(read_artist_info(result))
+    	getInfo_params = {
+    	  method: 'artist.getInfo',
+    	  artist: result,
+    	  api_key: ENV['LASTFM_API_KEY'],
+    	  format: 'json',
+    	}
+    	getTopTracks_params = {
+    	  method: 'artist.getTopTracks',
+    	  artist: result,
+    	  limit:5,
+    	  api_key: ENV['LASTFM_API_KEY'],
+    	  format: 'json'      	  
+    	}
+  	  artistInfo = read_artist_info(getInfo_params,getTopTracks_params)
+  	  artist = Artist.new(artistInfo)
       @resultArr << artist
     end
     
     @resultArr = Kaminari.paginate_array(@resultArr).page(params[:page]).per(5)
-
+# binding.pry
   end
 
 
@@ -64,13 +78,13 @@ class ArtistsController < ApplicationController
   def detail
     getInfo_params = {
   	  method: 'artist.getInfo',
-  	  mbid: params[:mbid],
+  	  artist: params[:name],
   	  api_key: ENV['LASTFM_API_KEY'],
   	  format: 'json',
   	}
   	getTopTracks_params = {
   	  method: 'artist.getTopTracks',
-  	  mbid: params[:mbid],
+  	  artist: params[:name],
   	  limit:5,
   	  api_key: ENV['LASTFM_API_KEY'],
   	  format: 'json'      	  
