@@ -6,9 +6,10 @@ Rails.application.routes.draw do
 	get 'tracks', to: 'tracks#index'
 	
 	# アーティスト・アーティスト検索。あとでshowもつける
-	resources :artists,only: [:index] do
+	resources :artists,only: [:index,:show] do
 		collection do
 			get :search
+			get :detail
 		end
 	end
 	

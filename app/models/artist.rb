@@ -5,4 +5,5 @@ class Artist < ApplicationRecord
 	validates :summary, presence: true, length: { maximum: 255 }
 	validates :similar, presence: true, length: { maximum: 255 }
 	validates :topTracks, presence: true, length: { maximum: 255 }
+	validates :mbid, presence: true, length: { maximum: 255 }
 end
