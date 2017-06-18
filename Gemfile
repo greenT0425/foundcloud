@@ -59,3 +59,7 @@ gem 'google-api-client', '0.7'
 gem 'trollop'
 
 gem 'pry-byebug', group: :development
+
+group :production do
+  gem 'pg'
+end
